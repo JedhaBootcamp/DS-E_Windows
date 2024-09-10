@@ -4,26 +4,6 @@
 # Désactiver les restrictions d'exécution de scripts PowerShell
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
-# Activer WSL (Windows Subsystem for Linux)
-Write-Host "Activation de WSL..."
-wsl --install -d Ubuntu
-
-# Installer la fonctionnalité Windows Subsystem for Linux si non activée
-if (-not (Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux).State -eq "Enabled") {
-    Write-Host "Installation de la fonctionnalité WSL..."
-    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart -All
-}
-
-# Installer la fonctionnalité Machine Virtuelle nécessaire pour WSL 2
-if (-not (Get-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform).State -eq "Enabled") {
-    Write-Host "Installation de la fonctionnalité VirtualMachinePlatform..."
-    Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart -All
-}
-
-# Redémarrer la machine pour activer les fonctionnalités WSL 2
-Write-Host "Redémarrage nécessaire pour terminer l'installation de WSL 2..."
-Restart-Computer -Force
-
 # Vérifier si Chocolatey est déjà installé
 if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
     Write-Host "Installation de Chocolatey..."
@@ -108,3 +88,23 @@ if (Test-Path $condaPath) {
 }
 
 Write-Host "Installation terminée avec succès ! Redémarre ta machine pour finaliser les installations."
+
+# Activer WSL (Windows Subsystem for Linux)
+Write-Host "Activation de WSL..."
+wsl --install -d Ubuntu
+
+# Installer la fonctionnalité Windows Subsystem for Linux si non activée
+if (-not (Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux).State -eq "Enabled") {
+    Write-Host "Installation de la fonctionnalité WSL..."
+    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart -All
+}
+
+# Installer la fonctionnalité Machine Virtuelle nécessaire pour WSL 2
+if (-not (Get-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform).State -eq "Enabled") {
+    Write-Host "Installation de la fonctionnalité VirtualMachinePlatform..."
+    Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart -All
+}
+
+# Redémarrer la machine pour activer les fonctionnalités WSL 2
+Write-Host "Redémarrage nécessaire pour terminer l'installation de WSL 2..."
+Restart-Computer -Force
