@@ -79,6 +79,14 @@ choco install minikube -y
 Write-Host "Installation de Git..."
 choco install git -y
 
+# Installer Google Chrome
+Write-Host "Installation de Google Chrome..."
+choco install googlechrome -y
+
+# Installer Mozilla Firefox
+Write-Host "Installation de Mozilla Firefox..."
+choco install firefox -y
+
 # Vérification de la configuration Python (Anaconda) et installation de Jupyter
 Write-Host "Configuration de Python et Jupyter..."
 $pythonPath = "C:\ProgramData\Anaconda3\python.exe"

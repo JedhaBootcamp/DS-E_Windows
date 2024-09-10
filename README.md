@@ -11,3 +11,5 @@ The following script `install.ps1` is a PowerShell script that installs the foll
 - [Discord](https://discord.com/)
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 - [Git](https://git-scm.com/)
+- [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+- [Chrome](https://www.google.com/intl/en_us/chrome/)
